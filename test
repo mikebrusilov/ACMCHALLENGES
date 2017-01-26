@@ -1,0 +1,57 @@
+html>
+<head>
+<script>
+var index = 1;
+    
+    function insertRow(){
+                var table=document.getElementById("myTable");
+                
+				var row=table.insertRow(table.rows.length);
+                
+				var cell1=row.insertCell(0);	
+                var t1=document.createElement("input");
+                    t1.id = "ticker"+index;
+                    cell1.appendChild(t1);
+					
+                var cell2=row.insertCell(1);
+                var t2=document.createElement("input");
+                    t2.id = "quantity"+index;
+                    cell2.appendChild(t2);
+
+          index++;
+    }
+	
+	 function cloneRow() {
+		
+		if(index === document.getElementById("1")){
+		console.log("true");
+		}
+		
+      var row = document.getElementById("clone"); // find row to copy
+      var table = document.getElementById("myTable"); // find table to append to
+      var clone = row.cloneNode(true); // copy children too
+      clone.id = index++; // change id or other attributes/contents
+      table.appendChild(clone); // add new row to end of table
+	  index++;
+    }
+	
+	
+	function deleteRow(){
+		 var table=document.getElementById("myTable");
+		 if(table.rows.length-1 > 1){ document.getElementById("myTable").deleteRow(table.rows.length-1);}
+	}
+</script>
+</head>
+<body>
+<table id="myTable">
+        <th>Ticker (specify CN/US) or CUSIP</th>
+        <th>Quantity</th>
+        <tr id="clone">
+            <td><input type="text" id="ticker" /></td>
+            <td><input type="text" id="quantity" /></td>
+            <td><input type="button" id="1" onClick="cloneRow()" value="add"></input></td>
+			<td><input type="button" onClick="deleteRow()" value="delete"></input></td>
+        </tr>
+</table>
+</body>
+</html>
